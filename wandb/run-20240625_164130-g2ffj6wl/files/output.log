@@ -1,0 +1,464 @@
+[2024-06-25 16:41:38,504][root][INFO] - label_values: [[0, 0]]
+[2024-06-25 16:41:38,505][flwr][WARNING] -
+        DEPRECATED FEATURE: flwr.client.start_numpy_client() is deprecated.
+	Instead, use `flwr.client.start_client()` by ensuring you first call the `.to_client()` method as shown below:
+	flwr.client.start_client(
+		server_address='<IP>:<PORT>',
+		client=FlowerClient().to_client(), # <-- where FlowerClient is of type flwr.client.NumPyClient object
+	)
+	Using `start_numpy_client()` is deprecated.
+        This is a deprecated feature. It will be removed
+        entirely in future versions of Flower.
+[32mINFO[39m:     127.0.0.1:35350 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[2024-06-25 16:41:38,527][flwr][INFO] - Opened insecure gRPC connection (no certificates were passed)
+[2024-06-25 16:41:38,528][flwr][DEBUG] - ChannelConnectivity.IDLE
+[2024-06-25 16:41:38,529][flwr][DEBUG] - ChannelConnectivity.CONNECTING
+[2024-06-25 16:41:38,533][flwr][DEBUG] - ChannelConnectivity.TRANSIENT_FAILURE
+[2024-06-25 16:41:38,737][flwr][DEBUG] - gRPC channel closed
+[2024-06-25 16:41:38,765][root][INFO] - notify_fail start
+[2024-06-25 16:41:38,785][root][ERROR] - trainFin
+WARNING flwr 2024-06-25 16:41:38,505 | logger.py:118 |
+        DEPRECATED FEATURE: flwr.client.start_numpy_client() is deprecated.
+	Instead, use `flwr.client.start_client()` by ensuring you first call the `.to_client()` method as shown below:
+	flwr.client.start_client(
+		server_address='<IP>:<PORT>',
+		client=FlowerClient().to_client(), # <-- where FlowerClient is of type flwr.client.NumPyClient object
+	)
+	Using `start_numpy_client()` is deprecated.
+        This is a deprecated feature. It will be removed
+        entirely in future versions of Flower.
+INFO flwr 2024-06-25 16:41:38,527 | grpc.py:52 | Opened insecure gRPC connection (no certificates were passed)
+DEBUG flwr 2024-06-25 16:41:38,528 | connection.py:55 | ChannelConnectivity.IDLE
+DEBUG flwr 2024-06-25 16:41:38,529 | connection.py:55 | ChannelConnectivity.CONNECTING
+DEBUG flwr 2024-06-25 16:41:38,533 | connection.py:55 | ChannelConnectivity.TRANSIENT_FAILURE
+DEBUG flwr 2024-06-25 16:41:38,737 | connection.py:220 | gRPC channel closed
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/fedops/client/app.py", line 122, in fl_client_start
+    await loop.run_in_executor(None, client_start)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/flwr/client/app.py", line 500, in start_numpy_client
+    start_client(
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/flwr/client/app.py", line 248, in start_client
+    _start_client_internal(
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/flwr/client/app.py", line 361, in _start_client_internal
+    message = receive()
+              ^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/flwr/client/grpc_client/connection.py", line 132, in receive
+    proto = next(server_message_iterator)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/grpc/_channel.py", line 540, in __next__
+    return self._next()
+           ^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/grpc/_channel.py", line 966, in _next
+    raise self
+grpc._channel._MultiThreadedRendezvous: <_MultiThreadedRendezvous of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40021: Socket closed"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40021: Socket closed", grpc_status:14, created_time:"2024-06-25T16:41:38.533549659+09:00"}"
+>
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/logging/__init__.py", line 1110, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/logging/__init__.py", line 953, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/logging/__init__.py", line 687, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/logging/__init__.py", line 377, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/ccl/Desktop/SAFER/FedOps/client_main.py", line 85, in <module>
+    main()
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/hydra/_internal/hydra.py", line 119, in run
+    ret = run_job(
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/home/ccl/Desktop/SAFER/FedOps/client_main.py", line 81, in main
+    fl_client.start()
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/fedops/client/app.py", line 201, in start
+    uvicorn.run(self.app, host='0.0.0.0', port=self.client_port)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/uvicorn/main.py", line 575, in run
+    server.run()
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/uvicorn/server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 411, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 69, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/routing.py", line 75, in app
+    await response(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/responses.py", line 162, in __call__
+    await self.background()
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/background.py", line 45, in __call__
+    await task()
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/background.py", line 28, in __call__
+    await self.func(*self.args, **self.kwargs)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/fedops/client/app.py", line 158, in fl_client_start
+    logging.info('[E][PC0002] learning', e)
+Message: '[E][PC0002] learning'
+Arguments: (<_MultiThreadedRendezvous of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40021: Socket closed"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40021: Socket closed", grpc_status:14, created_time:"2024-06-25T16:41:38.533549659+09:00"}"
+>,)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/fedops/client/app.py", line 122, in fl_client_start
+    await loop.run_in_executor(None, client_start)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/flwr/client/app.py", line 500, in start_numpy_client
+    start_client(
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/flwr/client/app.py", line 248, in start_client
+    _start_client_internal(
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/flwr/client/app.py", line 361, in _start_client_internal
+    message = receive()
+              ^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/flwr/client/grpc_client/connection.py", line 132, in receive
+    proto = next(server_message_iterator)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/grpc/_channel.py", line 540, in __next__
+    return self._next()
+           ^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/grpc/_channel.py", line 966, in _next
+    raise self
+grpc._channel._MultiThreadedRendezvous: <_MultiThreadedRendezvous of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40021: Socket closed"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40021: Socket closed", grpc_status:14, created_time:"2024-06-25T16:41:38.533549659+09:00"}"
+>
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/logging/__init__.py", line 1110, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/logging/__init__.py", line 953, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/logging/__init__.py", line 687, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/logging/__init__.py", line 377, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/ccl/Desktop/SAFER/FedOps/client_main.py", line 85, in <module>
+    main()
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/hydra/_internal/hydra.py", line 119, in run
+    ret = run_job(
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/home/ccl/Desktop/SAFER/FedOps/client_main.py", line 81, in main
+    fl_client.start()
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/fedops/client/app.py", line 201, in start
+    uvicorn.run(self.app, host='0.0.0.0', port=self.client_port)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/uvicorn/main.py", line 575, in run
+    server.run()
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/uvicorn/server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 411, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 69, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/routing.py", line 75, in app
+    await response(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/responses.py", line 162, in __call__
+    await self.background()
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/background.py", line 45, in __call__
+    await task()
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/background.py", line 28, in __call__
+    await self.func(*self.args, **self.kwargs)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/fedops/client/app.py", line 158, in fl_client_start
+    logging.info('[E][PC0002] learning', e)
+Message: '[E][PC0002] learning'
+Arguments: (<_MultiThreadedRendezvous of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40021: Socket closed"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40021: Socket closed", grpc_status:14, created_time:"2024-06-25T16:41:38.533549659+09:00"}"
+>,)
+[31mERROR[39m:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 411, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 69, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/routing.py", line 75, in app
+    await response(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/responses.py", line 162, in __call__
+    await self.background()
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/background.py", line 45, in __call__
+    await task()
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/starlette/background.py", line 28, in __call__
+    await self.func(*self.args, **self.kwargs)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/fedops/client/app.py", line 161, in fl_client_start
+    raise e
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/fedops/client/app.py", line 122, in fl_client_start
+    await loop.run_in_executor(None, client_start)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/flwr/client/app.py", line 500, in start_numpy_client
+    start_client(
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/flwr/client/app.py", line 248, in start_client
+    _start_client_internal(
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/flwr/client/app.py", line 361, in _start_client_internal
+    message = receive()
+              ^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/flwr/client/grpc_client/connection.py", line 132, in receive
+    proto = next(server_message_iterator)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/grpc/_channel.py", line 540, in __next__
+    return self._next()
+           ^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/grpc/_channel.py", line 966, in _next
+    raise self
+grpc._channel._MultiThreadedRendezvous: <_MultiThreadedRendezvous of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40021: Socket closed"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40021: Socket closed", grpc_status:14, created_time:"2024-06-25T16:41:38.533549659+09:00"}"
+>
+[32mINFO[39m:     127.0.0.1:37978 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:37990 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:41768 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:42840 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:42854 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:50642 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:44974 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:44976 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:55810 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:54248 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:54260 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:57694 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:37256 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:37266 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:41984 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:49682 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:49688 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:54110 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:36126 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:36132 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:40324 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:47818 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:47824 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:54084 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:54088 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:60908 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:38778 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:38780 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:44142 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:34188 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:34198 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:37932 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:50664 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:50672 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:35132 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:53336 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:53352 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:57858 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:46056 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:46068 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:41140 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:55626 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:55632 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:58774 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:34140 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     127.0.0.1:34142 - "[1mGET /online HTTP/1.1[22m" [32m200 OK
+[32mINFO[39m:     Shutting down
+[32mINFO[39m:     Waiting for application shutdown.
+[32mINFO[39m:     Application shutdown complete.
+[32mINFO[39m:     Finished server process [[36m3623830[39m]
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 1517, in uvloop.loop.Loop.run_until_complete
+asyncio.exceptions.CancelledError
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/fedops/client/app.py", line 201, in start
+    uvicorn.run(self.app, host='0.0.0.0', port=self.client_port)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/uvicorn/main.py", line 575, in run
+    server.run()
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/uvicorn/server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/asyncio/runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+The above exception was the direct cause of the following exception:
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/urllib3/connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/urllib3/connectionpool.py", line 496, in _make_request
+    conn.request(
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/http/client.py", line 1281, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/http/client.py", line 1041, in _send_output
+    self.send(msg)
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/http/client.py", line 979, in send
+    self.connect()
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f7e440d0b10>: Failed to establish a new connection: [Errno 111] Connection refused
+The above exception was the direct cause of the following exception:
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/urllib3/connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8004): Max retries exceeded with url: /flclient_out (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f7e440d0b10>: Failed to establish a new connection: [Errno 111] Connection refused'))
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "/home/ccl/Desktop/SAFER/FedOps/client_main.py", line 81, in main
+    fl_client.start()
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/fedops/client/app.py", line 209, in start
+    client_api.ClientMangerAPI().get_client_out()
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/fedops/client/client_api.py", line 35, in get_client_out
+    requests.get(self.client_manager_addr + '/flclient_out')
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ccl/anaconda3/envs/isenv/lib/python3.11/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8004): Max retries exceeded with url: /flclient_out (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f7e440d0b10>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

@@ -1,0 +1,232 @@
+{
+    "os": "Linux-5.15.0-107-generic-x86_64-with-glibc2.31",
+    "python": "3.11.5",
+    "heartbeatAt": "2024-06-25T07:41:31.603441",
+    "startedAt": "2024-06-25T07:41:30.671587",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/ccl/Desktop/SAFER/FedOps/client_main.py",
+    "codePathLocal": "client_main.py",
+    "codePath": "client_main.py",
+    "git": {
+        "remote": "https://github.com/rriakang/FedOps_SAFER.git",
+        "commit": "1274d4a723d25ff4f3ec494f4f9df65e633f0c90"
+    },
+    "email": "z8086486@gachon.ac.kr",
+    "root": "/home/ccl/Desktop/SAFER/FedOps",
+    "host": "ccl-x-server",
+    "username": "ccl",
+    "executable": "/home/ccl/anaconda3/envs/isenv/bin/python3",
+    "cpu_count": 18,
+    "cpu_count_logical": 36,
+    "cpu_freq": {
+        "current": 2.869138888888889,
+        "min": 1200.0,
+        "max": 4633.333333333333
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4700.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4800.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 1.464,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4700.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4800.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 1.444,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4700.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4800.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4700.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4800.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.0,
+            "min": 1200.0,
+            "max": 4600.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 1832.2072448730469,
+            "used": 471.2068405151367
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "gpu_count": 2,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25769803776
+        },
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25769803776
+        }
+    ],
+    "memory": {
+        "total": 62.478302001953125
+    }
+}

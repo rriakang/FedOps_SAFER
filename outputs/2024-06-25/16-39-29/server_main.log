@@ -1,0 +1,11 @@
+[2024-06-25 16:39:32,148][root][ERROR] - No read global model
+[2024-06-25 16:39:32,148][root][INFO] - gl_model: None, gl_model_v: 0
+[2024-06-25 16:39:32,158][root][INFO] - last_gl_model_v: 0
+[2024-06-25 16:39:32,158][root][INFO] - init global model making
+[2024-06-25 16:39:32,175][flwr][INFO] - Starting Flower server, config: ServerConfig(num_rounds=5, round_timeout=None)
+[2024-06-25 16:39:32,191][flwr][INFO] - Flower ECE: gRPC server running (5 rounds), SSL is disabled
+[2024-06-25 16:39:32,191][flwr][INFO] - Initializing global parameters
+[2024-06-25 16:39:32,191][flwr][INFO] - Using initial parameters provided by strategy
+[2024-06-25 16:39:32,191][flwr][INFO] - Evaluating initial parameters
+[2024-06-25 16:39:32,240][root][INFO] - server close
+[2024-06-25 16:39:32,244][root][INFO] - global model version upgrade

@@ -11,7 +11,7 @@ import numpy as np
 class Mental_CNNGRU(nn.Module):
     def __init__(self, output_size):
         super(Mental_CNNGRU,self).__init__()
-        self.conv1d = nn.Conv1d(in_channels=30,out_channels=256, kernel_size=4)
+        self.conv1d = nn.Conv1d(in_channels=31,out_channels=256, kernel_size=4)
         self.gru = nn.GRU(input_size=256, hidden_size=64, batch_first=True)
         self.dropout = nn.Dropout(0.5)
         self.fc = nn.Linear(64, output_size)
@@ -68,8 +68,7 @@ def train_torch():
             val_loss /= len(val_loader)
             print(f'Epoch {epoch+1}/{epochs}, Validation Loss: {val_loss:.4f}')
 
-            
-         # Save the best model
+            # Save the best model
             if val_loss < best_val_loss:
                 best_val_loss = val_loss
                 best_model = model.state_dict()
@@ -79,7 +78,6 @@ def train_torch():
 
     return custom_train_torch
 
-# torch test
 def test_torch():
     def custom_test_torch(model, test_loader, cfg=None):
         criterion = nn.MSELoss()

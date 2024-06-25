@@ -101,12 +101,17 @@ def load_partition(dataset, validation_split, batch_size):
     """
     file_path ='./safer_dong.csv'
     data = pd.read_csv(file_path)
-    data = data.replace({'False': '0', 'True': '1'})
     # One-hot encoding for 'place' column
     data = pd.get_dummies(data, columns=['place'])
-    data = data.drop(columns="index")
+    data = data.replace({'False': '0', 'True': '1'})
     # Converting targetTime to datetime
     data['targetTime'] = pd.to_datetime(data['targetTime'])
+    # Sorting data by patient and time
+    data.sort_values(['이름', 'targetTime'], inplace=True)
+    data = data.fillna(0)
+    data = data.drop(columns="index")
+    # Converting targetTime to datetime
+    data = num_data(data)
     seq_cols = ['Daily_Entropy', 'Normalized_Daily_Entropy', 'Eight_Hour_Entropy',
        'Normalized_Eight_Hour_Entropy', 'first_TOTAL_ACCELERATION','Location_Variability',
        'last_TOTAL_ACCELERATION', 'mean_TOTAL_ACCELERATION',
@@ -117,13 +122,14 @@ def load_partition(dataset, validation_split, batch_size):
        'std_HEARTBEAT', 'nunique_HEARTBEAT', 'delta_DISTANCE', 'delta_SLEEP',
        'delta_STEP','sex', 'age', 'place_Unknown', 'place_hallway',
        'place_other', 'place_ward']
-    data = num_data(data)
+
 
     # Apply the function
     data = split_data_by_week(data)
-    patient_ids = data['이름'].unique()
     max_length = find_max_sequence_length_by_week(data,seq_cols)
+    patient_ids = data['이름'].unique()
     train_ids, test_ids = train_test_split(patient_ids, test_size=0.2, random_state=42)
+
     train_data = data[data['이름'].isin(train_ids)]
     test_data = data[data['이름'].isin(test_ids)]
     train_data = transform_target(train_data)
@@ -139,9 +145,10 @@ def load_partition(dataset, validation_split, batch_size):
  
 
     train_dataset = TensorDataset(X_train_tensor, y_train_tensor)
-    train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
     test_dataset = TensorDataset(X_test_tensor, y_test_tensor)
-    test_loader = DataLoader(test_dataset, batch_size=16, shuffle=False)
+
+    train_dataloader = DataLoader(train_dataset, batch_size=16, shuffle=True)
+    test_dataloader = DataLoader(test_dataset, batch_size=16, shuffle=False)
 
     # DataLoader for client training, validation, and test
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
@@ -194,9 +201,9 @@ def gl_model_torch_validation(batch_size):
     X_test_tensor, y_test_tensor = convert_results_to_tensors(test_results)
     
     train_dataset = TensorDataset(X_train_tensor, y_train_tensor)
-    train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
     test_dataset = TensorDataset(X_test_tensor, y_test_tensor)
-    test_loader = DataLoader(test_dataset, batch_size=16, shuffle=False)
+    train_dataloader = DataLoader(train_dataset, batch_size=16, shuffle=True)
+    test_dataloader = DataLoader(test_dataset, batch_size=16, shuffle=False)
 
     # DataLoader for global model validation
     gl_val_loader = DataLoader(test_dataset, batch_size=batch_size)
